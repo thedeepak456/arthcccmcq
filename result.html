@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Result</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Add result-page wrapper for CSS scoping -->
+<div class="result-page">
+
+    <div class="header">
+        <h2>CCC Online Examination Result</h2>
+        <div><strong>Name:</strong> <span id="studentName"></span></div>
+    </div>
+
+    <div class="score-box">
+        <div class="score" id="scoreText"></div>
+        <div id="percentage"></div>
+        <div id="resultBadge"></div>
+    </div>
+
+    <h3>Answer Review</h3>
+    <div id="reviewSection"></div>
+
+    <div class="buttons">
+        <button class="home-btn" onclick="goHome()">Go Home</button>
+        <button class="print-btn" onclick="window.print()">Print Result</button>
+    </div>
+
+</div>
+
+<script>
+// Get stored data
+const first = localStorage.getItem("firstName");
+const last = localStorage.getItem("lastName");
+const score = parseInt(localStorage.getItem("score"));
+const total = parseInt(localStorage.getItem("total"));
+const answers = JSON.parse(localStorage.getItem("answers"));
+const questions = JSON.parse(localStorage.getItem("questions"));
+
+// Show Name
+document.getElementById("studentName").innerText = first + " " + last;
+
+// Calculate percentage
+const percent = ((score / total) * 100).toFixed(2);
+
+// Show Score
+document.getElementById("scoreText").innerText = "Score: " + score + " / " + total;
+document.getElementById("percentage").innerText = "Percentage: " + percent + "%";
+
+// Pass/Fail Badge
+const resultBadge = document.getElementById("resultBadge");
+if(percent >= 40){
+    resultBadge.innerHTML = '<span class="badge badge-pass">PASS</span>';
+    document.getElementById("scoreText").classList.add("pass");
+} else {
+    resultBadge.innerHTML = '<span class="badge badge-fail">FAIL</span>';
+    document.getElementById("scoreText").classList.add("fail");
+}
+
+// Answer Review Section
+const reviewSection = document.getElementById("reviewSection");
+
+questions.forEach((q,i)=>{
+    if(answers[i] === null) return; // Skip unattempted
+
+    const userIndex = answers[i];
+    const correctIndex = q.answer;
+
+    // Determine status
+    const isCorrect = userIndex === correctIndex;
+
+    let statusClass = isCorrect ? "correct-answer" : "wrong-answer";
+
+    let reviewHTML = `<div class="review-question">
+        <p><strong>Q${i+1}: ${q.q}</strong></p>
+        <div class="option ${statusClass}">
+            <strong>Your Answer:</strong> ${q.options[userIndex]}
+        </div>`;
+
+    if(!isCorrect){
+        reviewHTML += `<div class="option correct-answer">
+            <strong>Correct Answer:</strong> ${q.options[correctIndex]}
+        </div>`;
+    }
+
+    reviewHTML += `</div>`;
+    reviewSection.innerHTML += reviewHTML;
+});
+
+// Go Home
+function goHome(){
+    localStorage.clear();
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

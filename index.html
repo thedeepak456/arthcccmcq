@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CCC Online Exam</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- START PAGE -->
+<div class="start-page" id="startPage">
+    <div class="card">
+        <h2>CCC Online Examination</h2>
+        <input type="text" id="firstName" placeholder="Enter First Name" class="input-field">
+        <input type="text" id="lastName" placeholder="Enter Last Name" class="input-field">
+        <button class="start-btn" onclick="startExam()">Start Exam</button>
+    </div>
+</div>
+
+<!-- QUIZ PAGE -->
+<div class="quiz-page" id="quizPage" style="display:none;">
+
+    <header class="header">
+        <div>Student: <span id="studentName"></span></div>
+        <div>Time Left: <span id="timer">30:00</span></div>
+    </header>
+
+    <main class="main">
+
+        <section class="quiz-container">
+            <div class="question-box">
+                <h3 id="question"></h3>
+                <div id="options"></div>
+
+                <div class="navigation">
+                    <button class="prev-btn" onclick="prevQuestion()">Previous</button>
+                    <button class="next-btn" onclick="nextQuestion()">Next</button>
+                    <button class="submit-btn" onclick="submitQuiz()">Submit Exam</button>
+                </div>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <h4>Question Status</h4>
+            <div id="questionNumbers"></div>
+        </aside>
+
+    </main>
+
+</div>
+
+<script>
+// =============================
+// QUIZ SCRIPT
+// =============================
+
+let timeLeft = 30 * 60;
+let timerInterval;
+
+const questions = [
+
+{q:"1. Communication through computer networks is called:", options:["Computing","Networking","Telecommunication","Processing"], answer:1},
+{q:"2. Which of the following is an example of electronic communication?", options:["Letter","Email","Newspaper","Fax"], answer:1},
+{q:"3. Video conferencing requires:", options:["Printer","Scanner","Webcam and Internet","Plotter"], answer:2},
+{q:"4. Which of the following is a collaboration tool?", options:["MS Paint","Google Docs","Notepad","Calculator"], answer:1},
+{q:"5. Email stands for:", options:["Electronic Mail","Electric Mail","Easy Mail","Express Mail"], answer:0},
+{q:"6. The symbol used in an email address is:", options:["#","&","@","%"], answer:2},
+{q:"7. Spam refers to:", options:["Important email","Unwanted email","Draft email","Official mail"], answer:1},
+{q:"8. Which is used for instant messaging?", options:["WhatsApp","MS Word","Excel","PowerPoint"], answer:0},
+{q:"9. VoIP stands for:", options:["Voice over Internet Protocol","Voice Internal Program","Video Internet","Virtual Online IP"], answer:0},
+{q:"10. Which is NOT a social networking site?", options:["Facebook","Twitter","Instagram","MS Excel"], answer:3},
+
+{q:"11. The Internet is a:", options:["Single computer","Network of networks","Software","Hardware device"], answer:1},
+{q:"12. ISP stands for:", options:["Internet Service Provider","Internal Service Provider","Internet System Protocol","Internal System Program"], answer:0},
+{q:"13. Which device connects a computer to the Internet?", options:["Monitor","Modem","Keyboard","Mouse"], answer:1},
+{q:"14. TCP/IP stands for:", options:["Transmission Control Protocol/Internet Protocol","Transfer Control Program","Total Communication Protocol","Transmission Computer Program"], answer:0},
+{q:"15. Which of the following is an Internet service?", options:["Email","WWW","FTP","All of these"], answer:3},
+{q:"16. FTP stands for:", options:["File Transfer Protocol","Fast Transfer Program","File Transmission Program","File Type Protocol"], answer:0},
+{q:"17. Internet speed is measured in:", options:["Bytes","Hertz","Bits per second","Inches"], answer:2},
+{q:"18. A website address is also called:", options:["URL","CPU","RAM","IPX"], answer:0},
+{q:"19. The first page of a website is called:", options:["Main page","Home page","Index","Master page"], answer:1},
+{q:"20. Which of the following is a search engine?", options:["Google","Yahoo","Bing","All of these"], answer:3},
+
+{q:"21. WWW stands for:", options:["World Wide Web","World Web Wide","Wide World Web","Web World Wide"], answer:0},
+{q:"22. WWW was invented by:", options:["Bill Gates","Tim Berners-Lee","Charles Babbage","Steve Jobs"], answer:1},
+{q:"23. HTTP stands for:", options:["Hyper Text Transfer Protocol","High Text Transfer Protocol","Hyperlink Text Transfer Program","Home Text Transfer Protocol"], answer:0},
+{q:"24. HTTPS is used for:", options:["Fast browsing","Secure browsing","Downloading","Uploading"], answer:1},
+{q:"25. A hyperlink is:", options:["Printed text","Clickable link","Image","Program"], answer:1},
+{q:"26. HTML stands for:", options:["Hyper Text Markup Language","High Text Machine Language","Hyper Tool Mark Language","Home Tool Markup Language"], answer:0},
+{q:"27. Web pages are written in:", options:["C","Java","HTML","Python"], answer:2},
+{q:"28. Which symbol indicates a secure website?", options:["Lock icon","Star","Arrow","Dot"], answer:0},
+{q:"29. A collection of web pages is called:", options:["Web browser","Website","Search engine","Protocol"], answer:1},
+{q:"30. Domain name represents:", options:["IP address","Website name","Protocol","Browser"], answer:1},
+
+{q:"31. Which of the following is a web browser?", options:["Google Chrome","MS Word","VLC","Photoshop"], answer:0},
+{q:"32. Microsoft Edge is developed by:", options:["Google","Apple","Microsoft","IBM"], answer:2},
+{q:"33. Mozilla Firefox is a:", options:["Search engine","Web browser","Email service","Protocol"], answer:1},
+{q:"34. A browser is used to:", options:["Create documents","Browse websites","Play music","Draw pictures"], answer:1},
+{q:"35. Bookmark is used to:", options:["Delete page","Save webpage address","Print page","Edit webpage"], answer:1},
+{q:"36. Incognito mode is used for:", options:["Safe browsing without saving history","Fast browsing","Downloading","Printing"], answer:0},
+{q:"37. Refresh button is used to:", options:["Close page","Reload page","Open new tab","Exit browser"], answer:1},
+{q:"38. Which browser is open-source?", options:["Firefox","Internet Explorer","Safari","Edge"], answer:0},
+{q:"39. Address bar is used to:", options:["Type URL","Search files","Play videos","Save document"], answer:0},
+{q:"40. Cookies are used to:", options:["Store user information","Delete data","Print files","Install software"], answer:0},
+
+{q:"41. Communication between computers requires:", options:["Printer","Network","Scanner","Speaker"], answer:1},
+{q:"42. LAN stands for:", options:["Local Area Network","Large Area Network","Long Area Network","Link Area Network"], answer:0},
+{q:"43. WAN stands for:", options:["Wide Area Network","Web Area Network","World Area Network","Wireless Area Network"], answer:0},
+{q:"44. MAN stands for:", options:["Main Area Network","Metropolitan Area Network","Medium Area Network","Master Area Network"], answer:1},
+{q:"45. Wi-Fi is a:", options:["Wired connection","Wireless connection","Software","Protocol"], answer:1},
+{q:"46. Bluetooth is used for:", options:["Long distance networking","Short distance communication","Printing","Scanning"], answer:1},
+{q:"47. Router is used to:", options:["Print documents","Connect networks","Store data","Display output"], answer:1},
+{q:"48. IP address stands for:", options:["Internet Protocol address","Internal Program address","Internet Program access","Internal Protocol address"], answer:0},
+{q:"49. Bandwidth refers to:", options:["Storage space","Data transfer capacity","Monitor size","CPU speed"], answer:1},
+{q:"50. Cyber safety includes:", options:["Sharing passwords","Using strong passwords","Clicking unknown links","Ignoring antivirus"], answer:1}
+
+];
+
+
+let currentQuestion=0;
+let userAnswers=new Array(questions.length).fill(null);
+let visited=new Array(questions.length).fill(false);
+
+function startExam(){
+    const first = document.getElementById("firstName").value.trim();
+    const last = document.getElementById("lastName").value.trim();
+
+    if(first === "" || last === ""){ 
+        alert("Enter First & Last Name"); 
+        return; 
+    }
+
+    // Store in localStorage for result page
+    localStorage.setItem("firstName", first);
+    localStorage.setItem("lastName", last);
+
+    document.getElementById("studentName").innerText = first + " " + last;
+    document.getElementById("startPage").style.display = "none";
+    document.getElementById("quizPage").style.display = "block";
+
+    startTimer();
+    loadQuestion();
+}
+
+
+function startTimer(){
+    timerInterval=setInterval(()=>{
+        let m=Math.floor(timeLeft/60);
+        let s=timeLeft%60;
+        document.getElementById("timer").innerText=`${m}:${s<10?"0"+s:s}`;
+        timeLeft--;
+        if(timeLeft<0){ clearInterval(timerInterval); submitQuiz(); }
+    },1000);
+}
+
+function loadQuestion(){
+    visited[currentQuestion]=true;
+    document.getElementById("question").innerText=questions[currentQuestion].q;
+
+    const optDiv=document.getElementById("options");
+    optDiv.innerHTML="";
+    questions[currentQuestion].options.forEach((opt,i)=>{
+        const checked=userAnswers[currentQuestion]===i?"checked":"";        
+        optDiv.innerHTML+=`
+        <label>
+            <input type="radio" name="option" value="${i}" ${checked}>
+            <span>${opt}</span>
+        </label>`;
+    });
+
+    updateSidebar();
+}
+
+function saveAnswer(){
+    const selected=document.querySelector('input[name="option"]:checked');
+    if(selected) userAnswers[currentQuestion]=parseInt(selected.value);
+}
+
+function nextQuestion(){ saveAnswer(); if(currentQuestion<questions.length-1){currentQuestion++; loadQuestion();} }
+function prevQuestion(){ saveAnswer(); if(currentQuestion>0){currentQuestion--; loadQuestion();} }
+
+function updateSidebar(){
+    const container=document.getElementById("questionNumbers");
+    container.innerHTML="";
+    questions.forEach((_,i)=>{
+        let cls="q-number";
+        if(userAnswers[i]!==null) cls+=" answered";
+        else if(visited[i]) cls+=" skipped";
+        container.innerHTML+=`<div class="${cls}" onclick="goTo(${i})">${i+1}</div>`;
+    });
+}
+
+function goTo(i){ saveAnswer(); currentQuestion=i; loadQuestion(); }
+
+function submitQuiz(){
+    saveAnswer(); clearInterval(timerInterval);
+    let score=0;
+    questions.forEach((q,i)=>{ if(userAnswers[i]===q.answer) score++; });
+    localStorage.setItem("score",score);
+    localStorage.setItem("total",questions.length);
+    localStorage.setItem("answers",JSON.stringify(userAnswers));
+    localStorage.setItem("questions",JSON.stringify(questions));
+    window.location.href="result.html";
+}
+
+document.addEventListener("visibilitychange",()=>{
+    if(document.hidden){ alert("Tab changed! Exam submitted."); submitQuiz(); }
+});
+</script>
+
+</body>
+</html>
