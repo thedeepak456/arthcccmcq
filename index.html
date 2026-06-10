@@ -57,70 +57,193 @@
 
 let timeLeft = 60 * 60;
 let timerInterval;
-
+```javascript
 const questions = [
 
-{q:"51. Which layer of the TCP/IP model is responsible for routing packets between networks?", options:["Application Layer","Transport Layer","Internet Layer","Network Access Layer"], answer:2},
-{q:"52. What is the default port number used by HTTPS?", options:["21","25","443","110"], answer:2},
-{q:"53. Which protocol automatically assigns IP addresses to devices on a network?", options:["DNS","DHCP","SMTP","ARP"], answer:1},
-{q:"54. Which of the following is a valid IPv4 address?", options:["192.168.1.256","172.16.5.10","300.10.1.1","192.168.1"], answer:1},
-{q:"55. The primary purpose of DNS is to:", options:["Encrypt data","Translate domain names into IP addresses","Transfer files","Send emails"], answer:1},
+{q:"1. Which component of the CPU performs arithmetic and logical operations?", options:["Control Unit","Arithmetic Logic Unit (ALU)","Memory Unit","Cache Controller"], answer:1},
 
-{q:"56. Which device operates mainly at the Data Link Layer of the OSI model?", options:["Switch","Router","Gateway","Modem"], answer:0},
-{q:"57. What does the term 'packet switching' mean?", options:["Dedicated communication path","Data divided into small units for transmission","Signal amplification","Wireless communication"], answer:1},
-{q:"58. Which protocol is used to securely transfer files over the Internet?", options:["FTP","HTTP","SFTP","POP3"], answer:2},
-{q:"59. What is the function of ARP?", options:["Find MAC address from IP address","Assign IP addresses","Send emails","Translate URLs"], answer:0},
-{q:"60. Which topology connects all devices to a central hub or switch?", options:["Ring","Bus","Star","Mesh"], answer:2},
+{q:"2. Which of the following memories is volatile in nature?", options:["ROM","EEPROM","RAM","Flash Memory"], answer:2},
 
-{q:"61. Which protocol is connection-oriented?", options:["UDP","IP","ICMP","TCP"], answer:3},
-{q:"62. What is the main advantage of fiber optic cables?", options:["Low bandwidth","High-speed data transmission","Wireless communication","Low security"], answer:1},
-{q:"63. A MAC address is usually represented in:", options:["Decimal format","Hexadecimal format","Binary only","Octal format"], answer:1},
-{q:"64. Which of the following is an example of a private IP address?", options:["8.8.8.8","172.20.10.5","1.1.1.1","64.233.160.0"], answer:1},
-{q:"65. Which protocol is commonly used for network diagnostics?", options:["ICMP","SMTP","POP3","FTP"], answer:0},
+{q:"3. A computer designed to perform extremely large scientific calculations is called:", options:["Minicomputer","Microcomputer","Supercomputer","Workstation"], answer:2},
 
-{q:"66. What is the purpose of a proxy server?", options:["Increase monitor resolution","Act as an intermediary between client and server","Replace DNS","Store passwords"], answer:1},
-{q:"67. Which network topology provides the highest fault tolerance?", options:["Bus","Star","Mesh","Ring"], answer:2},
-{q:"68. What is the full form of VPN?", options:["Virtual Private Network","Verified Public Network","Virtual Protocol Node","Variable Private Node"], answer:0},
-{q:"69. Which protocol is generally used for receiving emails while keeping them on the server?", options:["POP3","IMAP","SMTP","ARP"], answer:1},
-{q:"70. Which attack floods a server with excessive requests?", options:["Phishing","Spoofing","DoS","Sniffing"], answer:2},
+{q:"4. Which generation of computers introduced the use of Integrated Circuits (ICs)?", options:["First Generation","Second Generation","Third Generation","Fourth Generation"], answer:2},
 
-{q:"71. Which of the following is NOT a web browser?", options:["Firefox","Opera","Apache","Edge"], answer:2},
-{q:"72. The command 'ping' is used to:", options:["Test network connectivity","Transfer files","Configure routers","Encrypt data"], answer:0},
-{q:"73. What does URL primarily identify?", options:["A hardware device","A resource on the Internet","A network cable","An email account"], answer:1},
-{q:"74. Which organization developed the World Wide Web?", options:["NASA","CERN","UNESCO","IBM"], answer:1},
-{q:"75. What is the main function of a gateway?", options:["Connect dissimilar networks","Store web pages","Assign passwords","Manage printers"], answer:0},
+{q:"5. Which storage device generally provides faster data access than traditional HDDs?", options:["Magnetic Tape","Optical Disk","Solid State Drive","Floppy Disk"], answer:2},
 
-{q:"76. Which of the following is an example of real-time communication?", options:["Email","Discussion Forum","Video Conference","Blog"], answer:2},
-{q:"77. What is the purpose of cookies in web browsing?", options:["Store user preferences","Increase CPU speed","Encrypt files","Provide IP addresses"], answer:0},
-{q:"78. Which protocol is commonly used for video streaming on the web?", options:["HTTP/HTTPS","ARP","ICMP","SMTP"], answer:0},
-{q:"79. In networking, bandwidth is usually measured in:", options:["Pixels","Bits per second","Bytes per folder","Hertz only"], answer:1},
-{q:"80. Which layer of the OSI model handles end-to-end communication?", options:["Network","Transport","Session","Physical"], answer:1},
+{q:"6. What is the primary function of the Control Unit (CU)?", options:["Perform calculations","Store data permanently","Direct and coordinate computer operations","Display output"], answer:2},
 
-{q:"81. Which cyber threat secretly records user activities?", options:["Spyware","Firewall","Switch","Proxy"], answer:0},
-{q:"82. What is the primary purpose of HTTPS certificates?", options:["Increase speed","Authenticate and secure communication","Store web pages","Assign IP addresses"], answer:1},
-{q:"83. Which Internet service allows users to access files stored remotely?", options:["Cloud Storage","Compiler","Antivirus","Spreadsheet"], answer:0},
-{q:"84. What is the default port number for HTTP?", options:["443","80","21","25"], answer:1},
-{q:"85. Which protocol is responsible for translating private IP addresses to public IP addresses?", options:["NAT","SMTP","IMAP","FTP"], answer:0},
+{q:"7. Which of the following is an example of system software?", options:["MS Word","Adobe Photoshop","Windows 11","VLC Media Player"], answer:2},
 
-{q:"86. Which type of malware demands payment to restore access to data?", options:["Trojan","Spyware","Ransomware","Adware"], answer:2},
-{q:"87. What is the purpose of two-factor authentication (2FA)?", options:["Reduce security","Provide an extra security layer","Increase bandwidth","Speed up login"], answer:1},
-{q:"88. Which networking device can filter traffic based on MAC addresses?", options:["Switch","Modem","Repeater","Hub"], answer:0},
-{q:"89. What does the term 'latency' refer to?", options:["Transmission delay","Storage size","Screen resolution","Signal strength"], answer:0},
-{q:"90. Which protocol is used to resolve domain names?", options:["DHCP","DNS","FTP","POP3"], answer:1},
+{q:"8. The process of converting source code into machine code is known as:", options:["Scanning","Booting","Compiling","Defragmenting"], answer:2},
 
-{q:"91. Which of the following best describes cloud computing?", options:["Local storage only","On-demand computing services over the Internet","A type of router","An email protocol"], answer:1},
-{q:"92. What is a major benefit of video conferencing?", options:["Requires no Internet","Real-time remote collaboration","Eliminates communication","Works only on LAN"], answer:1},
-{q:"93. Which cyberattack involves creating a fake website to steal credentials?", options:["Phishing","Defragmentation","Caching","Compression"], answer:0},
-{q:"94. Which technology enables contactless payments using smartphones?", options:["NFC","FTP","ARP","SMTP"], answer:0},
-{q:"95. What is the primary purpose of an SSL/TLS protocol?", options:["File transfer","Secure communication","Printer sharing","IP allocation"], answer:1},
+{q:"9. Which type of software is specifically developed to solve user-oriented tasks?", options:["Firmware","System Software","Application Software","Utility Software"], answer:2},
 
-{q:"96. Which command displays the IP configuration of a Windows computer?", options:["ping","tracert","ipconfig","netstat"], answer:2},
-{q:"97. Which of the following is a valid example of a domain name?", options:["192.168.1.1","google.com","255.255.255.0","8080"], answer:1},
-{q:"98. Which communication mode allows transmission in only one direction?", options:["Simplex","Half Duplex","Full Duplex","Multiplex"], answer:0},
-{q:"99. Which device regenerates weak signals in a network?", options:["Router","Switch","Repeater","Gateway"], answer:2},
-{q:"100. Which of the following is considered a strong password?", options:["12345678","password","Deepak@2026#X7","abcdef"], answer:2}
+{q:"10. Which number system is directly understood by computer hardware?", options:["Decimal","Binary","Octal","Hexadecimal"], answer:1},
+
+{q:"11. Which input device is most suitable for reading printed barcodes?", options:["OCR","MICR","Barcode Reader","Light Pen"], answer:2},
+
+{q:"12. Which memory stores the BIOS program of a computer?", options:["RAM","Cache Memory","ROM","Virtual Memory"], answer:2},
+
+{q:"13. Which type of computer language is closest to machine language?", options:["High-Level Language","Assembly Language","Fourth Generation Language","Scripting Language"], answer:1},
+
+{q:"14. Booting a computer by switching it on from a powered-off state is called:", options:["Warm Booting","Soft Booting","Cold Booting","Hybrid Booting"], answer:2},
+
+{q:"15. Which of the following is an output device?", options:["Scanner","Microphone","Plotter","Joystick"], answer:2},
+
+{q:"16. Which operating system feature enables multiple programs to run simultaneously?", options:["Multiprocessing","Multitasking","Buffering","Spooling"], answer:1},
+
+{q:"17. What is the primary purpose of a device driver?", options:["Increase RAM capacity","Enable communication between hardware and the OS","Protect against viruses","Compress files"], answer:1},
+
+{q:"18. Which type of operating system is designed to provide responses within a specified time limit?", options:["Distributed OS","Batch OS","Real-Time OS","Network OS"], answer:2},
+
+{q:"19. Which utility is commonly used to remove temporary files and free disk space?", options:["Disk Cleanup","Disk Defragmenter","Task Scheduler","Device Manager"], answer:0},
+
+{q:"20. What happens when a file is deleted using Shift + Delete in Windows?", options:["It is moved to Recycle Bin","It is compressed automatically","It bypasses Recycle Bin and is permanently deleted","It is renamed"], answer:2},
+
+{q:"21. Which Windows utility displays currently running applications and processes?", options:["Control Panel","Task Manager","Registry Editor","File Explorer"], answer:1},
+
+{q:"22. Which of the following is a valid file extension for executable files in Windows?", options:[".docx",".xlsx",".exe",".pptx"], answer:2},
+
+{q:"23. Which feature of an operating system helps prevent unauthorized access to resources?", options:["File Compression","User Authentication","Disk Formatting","Clipboard Management"], answer:1},
+
+{q:"24. The Recycle Bin in Windows is used to:", options:["Store downloaded files","Recover recently deleted files","Defragment the hard disk","Scan for malware"], answer:1},
+
+{q:"25. Which operating system component is responsible for allocating memory to programs?", options:["File Manager","Memory Manager","Process Scheduler","Device Controller"], answer:1},
+
+{q:"26. Which keyboard shortcut locks a Windows computer?", options:["Windows + L","Windows + D","Ctrl + L","Alt + L"], answer:0},
+
+{q:"27. Which operating system is open-source in nature?", options:["Windows 11","macOS","Linux","MS-DOS"], answer:2},
+
+{q:"28. What is the purpose of creating different user accounts on a computer?", options:["Increase processor speed","Reduce electricity consumption","Manage permissions and personalize settings","Improve internet connectivity"], answer:2},
+
+{q:"29. Which type of software continuously monitors the system for malicious threats?", options:["Compiler","Antivirus","Defragmenter","Browser Extension"], answer:1},
+
+{q:"30. Which of the following best describes an operating system?", options:["A hardware component that stores data","A program that manages computer resources and provides services to applications","A programming language used for software development","A utility for creating documents"], answer:1},
+
+
+{q:"31. Which MS Word feature is used to generate personalized letters for multiple recipients using a single template?", options:["Track Changes","Mail Merge","WordArt","AutoCorrect"], answer:1},
+
+{q:"32. Which shortcut key is used to justify the selected paragraph in MS Word?", options:["Ctrl + L","Ctrl + E","Ctrl + J","Ctrl + R"], answer:2},
+
+{q:"33. In MS Word, the Track Changes feature is primarily used for:", options:["Creating charts","Monitoring and reviewing edits made to a document","Converting documents to PDF","Inserting tables"], answer:1},
+
+{q:"34. What is the main purpose of the Format Painter tool?", options:["Insert images into a document","Copy formatting from one text selection to another","Create graphic designs","Highlight grammatical errors"], answer:1},
+
+{q:"35. Which tab contains the option to insert page numbers in a document?", options:["Home","Review","Insert","Layout"], answer:2},
+
+{q:"36. Using Styles in MS Word helps users to:", options:["Increase document security","Apply consistent formatting throughout the document","Compress document size","Translate the document automatically"], answer:1},
+
+{q:"37. Which keyboard shortcut opens the Replace dialog box?", options:["Ctrl + F","Ctrl + H","Ctrl + G","Ctrl + K"], answer:1},
+
+{q:"38. What is the primary function of the Thesaurus feature?", options:["Check spelling mistakes","Translate text into other languages","Suggest synonyms and related words","Insert citations automatically"], answer:2},
+
+{q:"39. Which view in MS Word displays the document as it would appear when printed?", options:["Draft View","Outline View","Print Layout View","Web Layout View"], answer:2},
+
+{q:"40. Which feature helps restrict editing access to a Word document?", options:["SmartArt","Restrict Editing","Format Painter","Word Count"], answer:1},
+
+{q:"41. Section Breaks are mainly used to:", options:["Delete multiple pages at once","Divide a document into sections with different formatting","Insert tables automatically","Merge multiple documents"], answer:1},
+
+{q:"42. Which feature automatically corrects common typing and spelling mistakes?", options:["AutoCorrect","Mail Merge","WordArt","Hyperlink"], answer:0},
+
+{q:"43. The Navigation Pane in Word is useful for:", options:["Running macros","Searching and moving through document headings and pages","Printing envelopes","Inserting equations"], answer:1},
+
+{q:"44. Which tab contains options related to Table of Contents and Footnotes?", options:["Insert","Home","References","Review"], answer:2},
+
+{q:"45. Comments inserted in a Word document are mainly used for:", options:["Increasing document size","Adding reviewer feedback without modifying the main text","Encrypting the document","Creating indexes"], answer:1},
+
+{q:"46. A workbook in a spreadsheet application is a collection of:", options:["Charts only","Worksheets","Databases","Macros"], answer:1},
+
+{q:"47. Which type of cell reference does not change when copied to another cell?", options:["Relative Reference","Mixed Reference","Absolute Reference","Dynamic Reference"], answer:2},
+
+{q:"48. Which function counts only the cells containing numerical values within a range?", options:["COUNTA()","COUNT()","COUNTIF()","SUM()"], answer:1},
+
+{q:"49. What will the formula '=SUM(B2:B6)' calculate?", options:["The average of B2 to B6","The maximum value from B2 to B6","The total of values from B2 to B6","The number of cells from B2 to B6"], answer:2},
+
+{q:"50. Which chart type is most suitable for displaying trends over time?", options:["Pie Chart","Doughnut Chart","Line Chart","Radar Chart"], answer:2},
+
+{q:"51. Which feature allows specific rows or columns to remain visible while scrolling through large datasets?", options:["Split Panes","Freeze Panes","Data Validation","Grouping"], answer:1},
+
+{q:"52. Conditional Formatting is used to:", options:["Lock selected cells","Automatically apply formatting based on defined conditions","Sort records alphabetically","Merge worksheets"], answer:1},
+
+{q:"53. Which function returns the largest value in a selected range?", options:["MIN()","LARGE()","MAX()","COUNT()"], answer:2},
+
+{q:"54. Filtering data in a spreadsheet is primarily used to:", options:["Delete duplicate records","Display only records that meet specific criteria","Convert formulas into values","Protect worksheets"], answer:1},
+
+{q:"55. Which key is commonly used to edit the contents of the active cell directly?", options:["F1","F2","F4","F7"], answer:1},
+
+{q:"56. If a formula contains an invalid cell reference, Excel may display:", options:["#VALUE!","#DIV/0!","#REF!","#NULL!"], answer:2},
+
+{q:"57. Protect Sheet is mainly used to:", options:["Change workbook themes","Prevent unauthorized changes to worksheet contents","Create backup files automatically","Compress spreadsheet size"], answer:1},
+
+{q:"58. Data Validation helps users to:", options:["Insert charts automatically","Restrict the type of data entered into cells","Recover deleted worksheets","Improve printing quality"], answer:1},
+
+{q:"59. Which formula correctly calculates the average of values in cells C1 through C10?", options:["=AVG(C1:C10)","=AVERAGE(C1:C10)","=MEAN(C1:C10)","=TOTAL(C1:C10)"], answer:1},
+
+{q:"60. Which chart type is most appropriate for representing parts of a whole as percentages?", options:["Bar Chart","Line Chart","Pie Chart","Scatter Chart"], answer:2},
+
+{q:"61. Which network topology provides the highest level of fault tolerance due to multiple communication paths?", options:["Bus Topology","Ring Topology","Star Topology","Mesh Topology"], answer:3},
+
+{q:"62. What is the primary function of a modem in Internet communication?", options:["Store web pages locally","Convert digital signals to analog signals and vice versa","Filter malicious websites","Increase processor speed"], answer:1},
+
+{q:"63. Which type of network is generally used within a school or college campus?", options:["PAN","LAN","MAN","WAN"], answer:1},
+
+{q:"64. What is the main purpose of the Domain Name System (DNS)?", options:["Encrypt Internet traffic","Assign IP addresses automatically","Translate domain names into IP addresses","Monitor network performance"], answer:2},
+
+{q:"65. Which protocol is primarily used for sending email messages?", options:["FTP","SMTP","POP3","IMAP"], answer:1},
+
+{q:"66. Downloading a file means:", options:["Sending data from a local computer to a remote server","Receiving data from a remote server to a local device","Compressing a file before sharing","Converting a file into PDF format"], answer:1},
+
+{q:"67. Which email field allows recipients to receive a message without other recipients seeing their addresses?", options:["To","Cc","Subject","Bcc"], answer:3},
+
+{q:"68. The role of an Internet Service Provider (ISP) is to:", options:["Manufacture computer hardware","Provide access to the Internet","Design websites","Develop operating systems"], answer:1},
+
+{q:"69. Which type of malware can replicate itself and spread without user intervention?", options:["Trojan Horse","Adware","Worm","Spyware"], answer:2},
+
+{q:"70. Cloud computing primarily enables users to:", options:["Increase monitor resolution","Access computing resources over the Internet on demand","Replace operating systems permanently","Eliminate the need for data backups"], answer:1},
+
+{q:"71. Which security practice provides an additional verification step beyond passwords?", options:["Disk Cleanup","Two-Factor Authentication (2FA)","Defragmentation","File Compression"], answer:1},
+
+{q:"72. Phishing is a cyberattack technique used to:", options:["Improve Internet speed","Repair corrupted files","Trick users into revealing sensitive information","Remove viruses automatically"], answer:2},
+
+{q:"73. Which protocol ensures secure communication between a browser and a web server?", options:["HTTP","FTP","HTTPS","Telnet"], answer:2},
+
+{q:"74. What is the primary purpose of an IP address?", options:["Increase network bandwidth","Uniquely identify devices on a network","Store email messages","Compress Internet data"], answer:1},
+
+{q:"75. Which of the following is an example of a cloud storage service?", options:["Notepad","Google Drive","Paint","Calculator"], answer:1},
+
+{q:"76. The World Wide Web (WWW) is best described as:", options:["A global collection of interconnected web pages and resources","A computer operating system","A type of computer network cable","A programming language"], answer:0},
+
+{q:"77. In the URL 'https://www.example.com', the term 'https' represents the:", options:["Domain name","Protocol used for communication","Web browser type","Search engine"], answer:1},
+
+{q:"78. What is the primary difference between a web browser and a search engine?", options:["Browsers search the web, while search engines display web pages","Search engines are software applications, while browsers are websites","Browsers access and display web pages, while search engines help locate information online","There is no difference between them"], answer:2},
+
+{q:"79. Which browser feature records previously visited websites for future reference?", options:["Cache","Downloads","History","Extensions"], answer:2},
+
+{q:"80. Browser cookies are mainly used to:", options:["Increase Internet bandwidth","Store user preferences and session information","Protect against malware","Compress multimedia files"], answer:1},
+
+{q:"81. Which browser button reloads the currently displayed webpage?", options:["Home","Back","Refresh/Reload","Forward"], answer:2},
+
+{q:"82. What is the main advantage of bookmarking a webpage?", options:["Improves Internet speed","Allows quick access to frequently visited websites","Prevents malware attacks","Automatically updates browser settings"], answer:1},
+
+{q:"83. A padlock icon displayed in the browser's address bar generally indicates that:", options:["The website is offline","The website uses a secure encrypted connection","The website is free to use","The webpage cannot be bookmarked"], answer:1},
+
+{q:"84. Which search strategy is most effective for obtaining relevant search results?", options:["Using very broad keywords only","Searching with complete unrelated sentences","Using specific and meaningful keywords","Avoiding quotation marks completely"], answer:2},
+
+{q:"85. A hyperlink on a webpage is used to:", options:["Increase screen brightness","Connect one web resource to another through a clickable element","Block advertisements automatically","Translate website content"], answer:1},
+
+{q:"86. Browser cache is primarily used to:", options:["Store copies of frequently accessed web content to improve loading speed","Monitor Internet usage","Detect phishing attempts","Encrypt user passwords"], answer:0},
+
+{q:"87. What is a key advantage of HTTPS over HTTP?", options:["Uses less Internet bandwidth","Supports only image files","Encrypts data exchanged between the user and the website","Eliminates the need for passwords"], answer:2},
+
+{q:"88. Which of the following practices contributes to safer web browsing?", options:["Downloading files from unknown websites","Sharing passwords through email","Keeping the browser and antivirus software updated","Ignoring browser security warnings"], answer:2},
+
+{q:"89. The browser's address bar is primarily used to:", options:["Display the operating system version","Enter and display website addresses (URLs)","Store downloaded files","Configure printer settings"], answer:1},
+
+{q:"90. Why is it important to verify a website's authenticity before entering personal information?", options:["Improve browser performance","Avoid exposure to fraudulent or malicious websites","Reduce Internet costs","Increase download speed"], answer:1}
 
 ];
+
+
 let currentQuestion=0;
 let userAnswers=new Array(questions.length).fill(null);
 let visited=new Array(questions.length).fill(false);
