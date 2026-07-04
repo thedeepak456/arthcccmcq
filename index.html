@@ -60,190 +60,67 @@ let timerInterval;
 
 const questions = [
 
-{q:"1. Which component of the CPU performs arithmetic and logical operations?", options:["Control Unit","Arithmetic Logic Unit (ALU)","Memory Unit","Cache Controller"], answer:1},
-
-{q:"2. Which of the following memories is volatile in nature?", options:["ROM","EEPROM","RAM","Flash Memory"], answer:2},
-
-{q:"3. A computer designed to perform extremely large scientific calculations is called:", options:["Minicomputer","Microcomputer","Supercomputer","Workstation"], answer:2},
-
-{q:"4. Which generation of computers introduced the use of Integrated Circuits (ICs)?", options:["First Generation","Second Generation","Third Generation","Fourth Generation"], answer:2},
-
-{q:"5. Which storage device generally provides faster data access than traditional HDDs?", options:["Magnetic Tape","Optical Disk","Solid State Drive","Floppy Disk"], answer:2},
-
-{q:"6. What is the primary function of the Control Unit (CU)?", options:["Perform calculations","Store data permanently","Direct and coordinate computer operations","Display output"], answer:2},
-
-{q:"7. Which of the following is an example of system software?", options:["MS Word","Adobe Photoshop","Windows 11","VLC Media Player"], answer:2},
-
-{q:"8. The process of converting source code into machine code is known as:", options:["Scanning","Booting","Compiling","Defragmenting"], answer:2},
-
-{q:"9. Which type of software is specifically developed to solve user-oriented tasks?", options:["Firmware","System Software","Application Software","Utility Software"], answer:2},
-
-{q:"10. Which number system is directly understood by computer hardware?", options:["Decimal","Binary","Octal","Hexadecimal"], answer:1},
-
-{q:"11. Which input device is most suitable for reading printed barcodes?", options:["OCR","MICR","Barcode Reader","Light Pen"], answer:2},
-
-{q:"12. Which memory stores the BIOS program of a computer?", options:["RAM","Cache Memory","ROM","Virtual Memory"], answer:2},
-
-{q:"13. Which type of computer language is closest to machine language?", options:["High-Level Language","Assembly Language","Fourth Generation Language","Scripting Language"], answer:1},
-
-{q:"14. Booting a computer by switching it on from a powered-off state is called:", options:["Warm Booting","Soft Booting","Cold Booting","Hybrid Booting"], answer:2},
-
-{q:"15. Which of the following is an output device?", options:["Scanner","Microphone","Plotter","Joystick"], answer:2},
-
-{q:"16. Which operating system feature enables multiple programs to run simultaneously?", options:["Multiprocessing","Multitasking","Buffering","Spooling"], answer:1},
-
-{q:"17. What is the primary purpose of a device driver?", options:["Increase RAM capacity","Enable communication between hardware and the OS","Protect against viruses","Compress files"], answer:1},
-
-{q:"18. Which type of operating system is designed to provide responses within a specified time limit?", options:["Distributed OS","Batch OS","Real-Time OS","Network OS"], answer:2},
-
-{q:"19. Which utility is commonly used to remove temporary files and free disk space?", options:["Disk Cleanup","Disk Defragmenter","Task Scheduler","Device Manager"], answer:0},
-
-{q:"20. What happens when a file is deleted using Shift + Delete in Windows?", options:["It is moved to Recycle Bin","It is compressed automatically","It bypasses Recycle Bin and is permanently deleted","It is renamed"], answer:2},
-
-{q:"21. Which Windows utility displays currently running applications and processes?", options:["Control Panel","Task Manager","Registry Editor","File Explorer"], answer:1},
-
-{q:"22. Which of the following is a valid file extension for executable files in Windows?", options:[".docx",".xlsx",".exe",".pptx"], answer:2},
-
-{q:"23. Which feature of an operating system helps prevent unauthorized access to resources?", options:["File Compression","User Authentication","Disk Formatting","Clipboard Management"], answer:1},
-
-{q:"24. The Recycle Bin in Windows is used to:", options:["Store downloaded files","Recover recently deleted files","Defragment the hard disk","Scan for malware"], answer:1},
-
-{q:"25. Which operating system component is responsible for allocating memory to programs?", options:["File Manager","Memory Manager","Process Scheduler","Device Controller"], answer:1},
-
-{q:"26. Which keyboard shortcut locks a Windows computer?", options:["Windows + L","Windows + D","Ctrl + L","Alt + L"], answer:0},
-
-{q:"27. Which operating system is open-source in nature?", options:["Windows 11","macOS","Linux","MS-DOS"], answer:2},
-
-{q:"28. What is the purpose of creating different user accounts on a computer?", options:["Increase processor speed","Reduce electricity consumption","Manage permissions and personalize settings","Improve internet connectivity"], answer:2},
-
-{q:"29. Which type of software continuously monitors the system for malicious threats?", options:["Compiler","Antivirus","Defragmenter","Browser Extension"], answer:1},
-
-{q:"30. Which of the following best describes an operating system?", options:["A hardware component that stores data","A program that manages computer resources and provides services to applications","A programming language used for software development","A utility for creating documents"], answer:1},
-
-
-{q:"31. Which MS Word feature is used to generate personalized letters for multiple recipients using a single template?", options:["Track Changes","Mail Merge","WordArt","AutoCorrect"], answer:1},
-
-{q:"32. Which shortcut key is used to justify the selected paragraph in MS Word?", options:["Ctrl + L","Ctrl + E","Ctrl + J","Ctrl + R"], answer:2},
-
-{q:"33. In MS Word, the Track Changes feature is primarily used for:", options:["Creating charts","Monitoring and reviewing edits made to a document","Converting documents to PDF","Inserting tables"], answer:1},
-
-{q:"34. What is the main purpose of the Format Painter tool?", options:["Insert images into a document","Copy formatting from one text selection to another","Create graphic designs","Highlight grammatical errors"], answer:1},
-
-{q:"35. Which tab contains the option to insert page numbers in a document?", options:["Home","Review","Insert","Layout"], answer:2},
-
-{q:"36. Using Styles in MS Word helps users to:", options:["Increase document security","Apply consistent formatting throughout the document","Compress document size","Translate the document automatically"], answer:1},
-
-{q:"37. Which keyboard shortcut opens the Replace dialog box?", options:["Ctrl + F","Ctrl + H","Ctrl + G","Ctrl + K"], answer:1},
-
-{q:"38. What is the primary function of the Thesaurus feature?", options:["Check spelling mistakes","Translate text into other languages","Suggest synonyms and related words","Insert citations automatically"], answer:2},
-
-{q:"39. Which view in MS Word displays the document as it would appear when printed?", options:["Draft View","Outline View","Print Layout View","Web Layout View"], answer:2},
-
-{q:"40. Which feature helps restrict editing access to a Word document?", options:["SmartArt","Restrict Editing","Format Painter","Word Count"], answer:1},
-
-{q:"41. Section Breaks are mainly used to:", options:["Delete multiple pages at once","Divide a document into sections with different formatting","Insert tables automatically","Merge multiple documents"], answer:1},
-
-{q:"42. Which feature automatically corrects common typing and spelling mistakes?", options:["AutoCorrect","Mail Merge","WordArt","Hyperlink"], answer:0},
-
-{q:"43. The Navigation Pane in Word is useful for:", options:["Running macros","Searching and moving through document headings and pages","Printing envelopes","Inserting equations"], answer:1},
-
-{q:"44. Which tab contains options related to Table of Contents and Footnotes?", options:["Insert","Home","References","Review"], answer:2},
-
-{q:"45. Comments inserted in a Word document are mainly used for:", options:["Increasing document size","Adding reviewer feedback without modifying the main text","Encrypting the document","Creating indexes"], answer:1},
-
-{q:"46. A workbook in a spreadsheet application is a collection of:", options:["Charts only","Worksheets","Databases","Macros"], answer:1},
-
-{q:"47. Which type of cell reference does not change when copied to another cell?", options:["Relative Reference","Mixed Reference","Absolute Reference","Dynamic Reference"], answer:2},
-
-{q:"48. Which function counts only the cells containing numerical values within a range?", options:["COUNTA()","COUNT()","COUNTIF()","SUM()"], answer:1},
-
-{q:"49. What will the formula '=SUM(B2:B6)' calculate?", options:["The average of B2 to B6","The maximum value from B2 to B6","The total of values from B2 to B6","The number of cells from B2 to B6"], answer:2},
-
-{q:"50. Which chart type is most suitable for displaying trends over time?", options:["Pie Chart","Doughnut Chart","Line Chart","Radar Chart"], answer:2},
-
-{q:"51. Which feature allows specific rows or columns to remain visible while scrolling through large datasets?", options:["Split Panes","Freeze Panes","Data Validation","Grouping"], answer:1},
-
-{q:"52. Conditional Formatting is used to:", options:["Lock selected cells","Automatically apply formatting based on defined conditions","Sort records alphabetically","Merge worksheets"], answer:1},
-
-{q:"53. Which function returns the largest value in a selected range?", options:["MIN()","LARGE()","MAX()","COUNT()"], answer:2},
-
-{q:"54. Filtering data in a spreadsheet is primarily used to:", options:["Delete duplicate records","Display only records that meet specific criteria","Convert formulas into values","Protect worksheets"], answer:1},
-
-{q:"55. Which key is commonly used to edit the contents of the active cell directly?", options:["F1","F2","F4","F7"], answer:1},
-
-{q:"56. If a formula contains an invalid cell reference, Excel may display:", options:["#VALUE!","#DIV/0!","#REF!","#NULL!"], answer:2},
-
-{q:"57. Protect Sheet is mainly used to:", options:["Change workbook themes","Prevent unauthorized changes to worksheet contents","Create backup files automatically","Compress spreadsheet size"], answer:1},
-
-{q:"58. Data Validation helps users to:", options:["Insert charts automatically","Restrict the type of data entered into cells","Recover deleted worksheets","Improve printing quality"], answer:1},
-
-{q:"59. Which formula correctly calculates the average of values in cells C1 through C10?", options:["=AVG(C1:C10)","=AVERAGE(C1:C10)","=MEAN(C1:C10)","=TOTAL(C1:C10)"], answer:1},
-
-{q:"60. Which chart type is most appropriate for representing parts of a whole as percentages?", options:["Bar Chart","Line Chart","Pie Chart","Scatter Chart"], answer:2},
-
-{q:"61. Which network topology provides the highest level of fault tolerance due to multiple communication paths?", options:["Bus Topology","Ring Topology","Star Topology","Mesh Topology"], answer:3},
-
-{q:"62. What is the primary function of a modem in Internet communication?", options:["Store web pages locally","Convert digital signals to analog signals and vice versa","Filter malicious websites","Increase processor speed"], answer:1},
-
-{q:"63. Which type of network is generally used within a school or college campus?", options:["PAN","LAN","MAN","WAN"], answer:1},
-
-{q:"64. What is the main purpose of the Domain Name System (DNS)?", options:["Encrypt Internet traffic","Assign IP addresses automatically","Translate domain names into IP addresses","Monitor network performance"], answer:2},
-
-{q:"65. Which protocol is primarily used for sending email messages?", options:["FTP","SMTP","POP3","IMAP"], answer:1},
-
-{q:"66. Downloading a file means:", options:["Sending data from a local computer to a remote server","Receiving data from a remote server to a local device","Compressing a file before sharing","Converting a file into PDF format"], answer:1},
-
-{q:"67. Which email field allows recipients to receive a message without other recipients seeing their addresses?", options:["To","Cc","Subject","Bcc"], answer:3},
-
-{q:"68. The role of an Internet Service Provider (ISP) is to:", options:["Manufacture computer hardware","Provide access to the Internet","Design websites","Develop operating systems"], answer:1},
-
-{q:"69. Which type of malware can replicate itself and spread without user intervention?", options:["Trojan Horse","Adware","Worm","Spyware"], answer:2},
-
-{q:"70. Cloud computing primarily enables users to:", options:["Increase monitor resolution","Access computing resources over the Internet on demand","Replace operating systems permanently","Eliminate the need for data backups"], answer:1},
-
-{q:"71. Which security practice provides an additional verification step beyond passwords?", options:["Disk Cleanup","Two-Factor Authentication (2FA)","Defragmentation","File Compression"], answer:1},
-
-{q:"72. Phishing is a cyberattack technique used to:", options:["Improve Internet speed","Repair corrupted files","Trick users into revealing sensitive information","Remove viruses automatically"], answer:2},
-
-{q:"73. Which protocol ensures secure communication between a browser and a web server?", options:["HTTP","FTP","HTTPS","Telnet"], answer:2},
-
-{q:"74. What is the primary purpose of an IP address?", options:["Increase network bandwidth","Uniquely identify devices on a network","Store email messages","Compress Internet data"], answer:1},
-
-{q:"75. Which of the following is an example of a cloud storage service?", options:["Notepad","Google Drive","Paint","Calculator"], answer:1},
-
-{q:"76. The World Wide Web (WWW) is best described as:", options:["A global collection of interconnected web pages and resources","A computer operating system","A type of computer network cable","A programming language"], answer:0},
-
-{q:"77. In the URL 'https://www.example.com', the term 'https' represents the:", options:["Domain name","Protocol used for communication","Web browser type","Search engine"], answer:1},
-
-{q:"78. What is the primary difference between a web browser and a search engine?", options:["Browsers search the web, while search engines display web pages","Search engines are software applications, while browsers are websites","Browsers access and display web pages, while search engines help locate information online","There is no difference between them"], answer:2},
-
-{q:"79. Which browser feature records previously visited websites for future reference?", options:["Cache","Downloads","History","Extensions"], answer:2},
-
-{q:"80. Browser cookies are mainly used to:", options:["Increase Internet bandwidth","Store user preferences and session information","Protect against malware","Compress multimedia files"], answer:1},
-
-{q:"81. Which browser button reloads the currently displayed webpage?", options:["Home","Back","Refresh/Reload","Forward"], answer:2},
-
-{q:"82. What is the main advantage of bookmarking a webpage?", options:["Improves Internet speed","Allows quick access to frequently visited websites","Prevents malware attacks","Automatically updates browser settings"], answer:1},
-
-{q:"83. A padlock icon displayed in the browser's address bar generally indicates that:", options:["The website is offline","The website uses a secure encrypted connection","The website is free to use","The webpage cannot be bookmarked"], answer:1},
-
-{q:"84. Which search strategy is most effective for obtaining relevant search results?", options:["Using very broad keywords only","Searching with complete unrelated sentences","Using specific and meaningful keywords","Avoiding quotation marks completely"], answer:2},
-
-{q:"85. A hyperlink on a webpage is used to:", options:["Increase screen brightness","Connect one web resource to another through a clickable element","Block advertisements automatically","Translate website content"], answer:1},
-
-{q:"86. Browser cache is primarily used to:", options:["Store copies of frequently accessed web content to improve loading speed","Monitor Internet usage","Detect phishing attempts","Encrypt user passwords"], answer:0},
-
-{q:"87. What is a key advantage of HTTPS over HTTP?", options:["Uses less Internet bandwidth","Supports only image files","Encrypts data exchanged between the user and the website","Eliminates the need for passwords"], answer:2},
-
-{q:"88. Which of the following practices contributes to safer web browsing?", options:["Downloading files from unknown websites","Sharing passwords through email","Keeping the browser and antivirus software updated","Ignoring browser security warnings"], answer:2},
-
-{q:"89. The browser's address bar is primarily used to:", options:["Display the operating system version","Enter and display website addresses (URLs)","Store downloaded files","Configure printer settings"], answer:1},
-
-{q:"90. Why is it important to verify a website's authenticity before entering personal information?", options:["Improve browser performance","Avoid exposure to fraudulent or malicious websites","Reduce Internet costs","Increase download speed"], answer:1}
+{q:"1. Which of the following is an Operating System?", options:["MS Word","Windows 11","PowerPoint","Excel"], answer:1},
+{q:"2. Which feature allows running multiple programs simultaneously?", options:["Formatting","Multitasking","Printing","Searching"], answer:1},
+{q:"3. Which shortcut key is used to switch between open applications in Windows?", options:["Ctrl + P","Alt + Tab","Ctrl + C","Ctrl + A"], answer:1},
+{q:"4. The Recycle Bin is used to:", options:["Store viruses","Permanently delete files","Temporarily store deleted files","Create folders"], answer:2},
+{q:"5. Which file extension represents an executable file in Windows?", options:[".txt",".jpg",".docx",".exe"], answer:3},
+
+{q:"6. Which shortcut key is used to save a document?", options:["Ctrl + S","Ctrl + P","Ctrl + X","Ctrl + N"], answer:0},
+{q:"7. Which option is used to merge multiple cells in a table?", options:["Split Cells","Merge Cells","Insert Cells","Delete Cells"], answer:1},
+{q:"8. Which shortcut key makes selected text bold?", options:["Ctrl + U","Ctrl + B","Ctrl + I","Ctrl + E"], answer:1},
+{q:"9. Which alignment places text equally between left and right margins?", options:["Left","Center","Right","Justify"], answer:3},
+{q:"10. Which feature automatically corrects common typing errors?", options:["Word Count","AutoCorrect","Find","Zoom"], answer:1},
+
+{q:"11. Which shortcut key is used to copy selected text?", options:["Ctrl + X","Ctrl + C","Ctrl + V","Ctrl + A"], answer:1},
+{q:"12. Which shortcut key is used to paste copied text?", options:["Ctrl + V","Ctrl + P","Ctrl + X","Ctrl + N"], answer:0},
+{q:"13. Which tab contains the option to insert page numbers?", options:["Home","Review","Insert","Layout"], answer:2},
+{q:"14. Which feature is used to find and replace text?", options:["AutoCorrect","Mail Merge","Find and Replace","Word Count"], answer:2},
+{q:"15. Which view displays the document as it will appear when printed?", options:["Draft View","Print Layout View","Web Layout View","Outline View"], answer:1},
+
+{q:"16. A spreadsheet is mainly used for:", options:["Drawing pictures","Playing games","Calculations and data analysis","Internet browsing"], answer:2},
+{q:"17. Which symbol is used to begin a formula in Calc/Excel?", options:["@","#","=","%"], answer:2},
+{q:"18. Which function calculates the average of selected values?", options:["SUM()","AVG()","AVERAGE()","COUNT()"], answer:2},
+{q:"19. A cell address consists of:", options:["Row number only","Column name only","Column letter and row number","Formula and function"], answer:2},
+{q:"20. Which chart is best for showing percentages of a whole?", options:["Bar Chart","Pie Chart","Line Chart","Scatter Chart"], answer:1},
+
+{q:"21. Which function returns the largest value in a range?", options:["MIN()","MAX()","COUNT()","SUM()"], answer:1},
+{q:"22. Which key is used to edit the contents of the active cell?", options:["F1","F2","F5","F7"], answer:1},
+{q:"23. Which feature keeps rows or columns visible while scrolling?", options:["Freeze Panes","Split Panes","Grouping","Sorting"], answer:0},
+{q:"24. Which formula calculates the total of cells A1 to A10?", options:["=COUNT(A1:A10)","=AVG(A1:A10)","=SUM(A1:A10)","=MAX(A1:A10)"], answer:2},
+{q:"25. Which feature restricts the type of data entered into cells?", options:["Data Validation","Conditional Formatting","Sorting","Filtering"], answer:0},
+
+{q:"26. Which software is used for creating presentations?", options:["Calc","Writer","Impress","Paint"], answer:2},
+{q:"27. Which key starts the slideshow from the beginning?", options:["F1","F5","F7","F12"], answer:1},
+{q:"28. What is the purpose of Slide Transition?", options:["To edit text","To add effects between slides","To insert tables","To save presentations"], answer:1},
+{q:"29. Which view is best for rearranging slides?", options:["Normal View","Slide Sorter View","Notes View","Reading View"], answer:1},
+{q:"30. Which option is used to insert a picture into a presentation?", options:["Review → Spelling","Insert → Image","View → Zoom","Format → Paragraph"], answer:1},
+
+{q:"31. What does HTTP stand for?", options:["Hyper Text Transfer Protocol","Hyper Transfer Text Program","High Text Transfer Protocol","Hyper Text Translate Program"], answer:0},
+{q:"32. Which of the following is a web browser?", options:["Gmail","Google Chrome","Windows","Linux"], answer:1},
+{q:"33. Which device connects a computer to the Internet?", options:["Scanner","Modem","Speaker","Plotter"], answer:1},
+{q:"34. Which domain is generally used by educational institutions?", options:[".com",".gov",".edu",".org"], answer:2},
+{q:"35. Which protocol is used for transferring files over the Internet?", options:["SMTP","HTTP","FTP","POP3"], answer:2},
+
+{q:"36. What does URL stand for?", options:["Uniform Resource Locator","Universal Resource Link","Uniform Reference Locator","Universal Reference Link"], answer:0},
+{q:"37. Which protocol is used to send email messages?", options:["SMTP","FTP","HTTP","TCP"], answer:0},
+{q:"38. Which protocol provides secure communication between browser and website?", options:["HTTP","FTP","HTTPS","SMTP"], answer:2},
+{q:"39. Which of the following is a search engine?", options:["Google","Windows","MS Word","Linux"], answer:0},
+{q:"40. What does WWW stand for?", options:["World Wide Web","Wide World Web","Web Wide World","World Web Window"], answer:0},
+
+{q:"41. Which symbol is mandatory in an email address?", options:["#","@","&","$"], answer:1},
+{q:"42. CC in email stands for:", options:["Carbon Copy","Computer Copy","Control Copy","Central Copy"], answer:0},
+{q:"43. BCC in email stands for:", options:["Blind Carbon Copy","Browser Carbon Copy","Binary Carbon Copy","Basic Carbon Copy"], answer:0},
+{q:"44. Which of the following is a social networking site?", options:["WhatsApp","Facebook","Excel","Paint"], answer:1},
+{q:"45. Which Indian digital payment system uses a UPI ID?", options:["RTGS","Demand Draft","UPI","Cheque"], answer:2},
+
+{q:"46. The main objective of e-Governance is to:", options:["Increase paperwork","Reduce digital services","Provide government services electronically","Replace the Internet"], answer:2},
+{q:"47. Which portal is commonly used for online government services in India?", options:["DigiLocker","Paint","Notepad","VLC"], answer:0},
+{q:"48. Which of the following is an example of cloud storage?", options:["Google Drive","MS Paint","Calculator","Notepad"], answer:0},
+{q:"49. Which payment app commonly uses UPI services?", options:["PhonePe","Paint","WordPad","Notepad"], answer:0},
+{q:"50. Which practice improves cyber security?", options:["Sharing passwords","Clicking unknown links","Using strong passwords","Ignoring updates"], answer:2}
 
 ];
-
-
 let currentQuestion=0;
 let userAnswers=new Array(questions.length).fill(null);
 let visited=new Array(questions.length).fill(false);
